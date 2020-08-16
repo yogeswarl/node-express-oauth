@@ -58,7 +58,7 @@ app.get('/authorize',(req,res) => {
 	const clientId = req.query.client_id;
 	const client = clients[clientId];
 	if(!client){
-		res.status(400).send('Error, Client ID not authorised')
+		res.status(401).send('Error, Client ID not authorised')
 		return
 	}
 	if (
