@@ -1,3 +1,4 @@
+const url = require('url')
 const fs = require("fs")
 const express = require("express")
 const bodyParser = require("body-parser")
@@ -8,7 +9,6 @@ const {
 	decodeAuthCredentials,
 	timeout,
 } = require("./utils")
-const { type } = require("os")
 
 const config = {
 	port: 9001,
@@ -70,7 +70,7 @@ app.get('/authorize',(req,res) => {
 	}
 	const requestId = randomString()
 	requests[requestId] = req.query
-	res.render("login", {
+	res.status(200).render("login", {
 		client,
 		scope: req.query.scope,
 		requestId,
